@@ -1,0 +1,51 @@
+-- Docker Compose --
+1. app env -> Dockerfile
+2. define services -> docker-compose.yml
+3. docker-compose up -> Compose starts and runs entire multi-container app [We will avoid docker-compose.yml, since service should be customizable and 
+its tough to write a program which writes a yml file for us, we will rather attempt to use the docker python api.
+
+-> Stop and remove all containers --> sudo docker rm -f $(sudo docker ps -a -q)
+NOTE: Removing a container does not mean removing an image!!
+
+WARNING ^: This sends a SIGTERM to container and container might not get time to save its state. For stateful containers use:
+	docker stop
+	docker rm 
+in this order
+-> For doing this to all containers at once, execute following commands in the same order:
+	sudo docker stop -f $(sudo docker ps -a -q)
+	sudo docker rm -f $(sudo docker ps -a -q)
+
+Kafka setup on docker:
+https://hub.docker.com/r/wurstmeister/kafka/
+[Avoid confluent Kafka, too many dependencies, difficult to handle]
+Mongo setup on docker
+https://hub.docker.com/_/mongo
+
+JSON data generator:
+https://github.com/everwatchsolutions/json-data-generator [README.md is old, instead see below links for docs]
+http://acesinc.net/introducing-a-streaming-json-data-generator/
+https://github.com/everwatchsolutions/json-data-generator/releases
+
+Apache Kafka Producer consumer example and pre-built jar for use by microsoft:
+https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-producer-consumer-api
+[jar attached in zip]
+
+Can use the one for microsoft for now for a simple experiment, will later shift to JSON data generator.
+
+-> Equivalent of AWS lambda for local build:
+https://hub.docker.com/r/lambci/lambda/dockerfile
+
+------------------------------------------------------------------------------------
+sudo docker stop -f $(sudo docker ps -a -q)
+sudo docker rm -f $(sudo docker ps -a -q)
+
+sudo docker run -v /home/shubham/Desktop/PaaS/shared:/home --name mongoDB -d mongo:latest
+sudo docker logs --follow mongoDB
+
+sudo docker run --entrypoint "/home/rmq_cons.py" -v /home/shubham/Desktop/PaaS/shared:/home --name rmq_recv -d cloudassignment/base localhost logs hello1 
+
+sudo docker build --network=host -t cloudassignment/base .
+sudo docker run --entrypoint "python" -v /home/shubham/Desktop/PaaS/shared:/home --name rmq_recv1 -d cloudassignment/base /home/rmq_cons.py localhost logs hello1
+
+
+
