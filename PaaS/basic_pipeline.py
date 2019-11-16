@@ -8,7 +8,7 @@ client = docker.from_env()
 global_net = client.networks.create("global_net", driver="bridge")
 
 # Shared folder configuration: location of the folder on host containing the scripts
-shared = {'/home/shubham/Desktop/PaaS/shared': {'bind': '/home', 'mode': 'rw'}}
+shared = {r'C:\Users\Mayank\Documents\BITS\Cloud Computing\Assignments\Term Project\Cloud-Term-Project\PaaS\shared': {'bind': '/home', 'mode': 'rw'}}
 
 # Launch a pipeline consisting of three containers, mqtt[-p 1883:1883, mqtt_cons.py] -> rmq_cons.py -> docker logs
 container1 = client.containers.run("cloudassignment/rabbitmq",

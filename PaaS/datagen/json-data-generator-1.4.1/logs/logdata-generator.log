@@ -931,3 +931,82 @@ Caused by: java.lang.InterruptedException
 2019-11-16 18:30:01,171 INFO n.a.d.j.g.JsonDataGenerator [Thread-6] Shutdown Hook Invoked.  Shutting Down Loggers
 2019-11-16 18:30:01,171 INFO n.a.d.j.g.SimulationRunner [Thread-6] Stopping Simulation
 2019-11-16 18:30:01,172 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:00:52,941 INFO n.a.d.j.g.JsonDataGenerator [main] Overriding Simulation Config file from command line to use [ mqtt.json ]
+2019-11-16 23:00:52,982 DEBUG n.a.d.j.g.JsonDataGenerator [main] Creating Simulation Runner using Simulation Config [ mqtt.json ]
+2019-11-16 23:00:53,896 INFO n.a.d.j.g.JsonDataGenerator [main] Adding MQTT Logger with properties: {type=mqtt, broker.server=tcp://localhost, broker.port=1884, topic=/test, clientId=LogEvent, qos=2}
+2019-11-16 23:00:54,208 DEBUG n.a.d.j.g.l.MqttLogger [main] Connecting to broker: tcp://localhost:1884
+2019-11-16 23:00:54,737 DEBUG n.a.d.j.g.l.MqttLogger [main] Connected
+2019-11-16 23:00:54,775 INFO n.a.d.j.g.SimulationRunner [main] Adding EventGenerator for [ jackieChan,jackieChanWorkflow.json ]
+2019-11-16 23:00:54,775 INFO n.a.d.j.g.SimulationRunner [main] Starting Simulation
+2019-11-16 23:00:55,380 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ lastName,net.acesinc.data.json.generator.types.LastName ]
+2019-11-16 23:00:55,381 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ boolean,net.acesinc.data.json.generator.types.BooleanType ]
+2019-11-16 23:00:55,384 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ now,net.acesinc.data.json.generator.types.NowType ]
+2019-11-16 23:00:55,385 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ alpha,net.acesinc.data.json.generator.types.AlphaType ]
+2019-11-16 23:00:55,386 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ timestamp,net.acesinc.data.json.generator.types.TimestampType ]
+2019-11-16 23:00:55,387 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ firstName,net.acesinc.data.json.generator.types.FirstName ]
+2019-11-16 23:00:55,387 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ nowTimestamp,net.acesinc.data.json.generator.types.NowTimestampType ]
+2019-11-16 23:00:55,388 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ counter,net.acesinc.data.json.generator.types.CounterType ]
+2019-11-16 23:00:55,389 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ stringMerge,net.acesinc.data.json.generator.types.StringMergeType ]
+2019-11-16 23:00:55,391 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ randomIncrementLong,net.acesinc.data.json.generator.types.RandomIncrementLongType ]
+2019-11-16 23:00:55,394 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ uuid,net.acesinc.data.json.generator.types.UuidType ]
+2019-11-16 23:00:55,395 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ double,net.acesinc.data.json.generator.types.DoubleType ]
+2019-11-16 23:00:55,396 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ random,net.acesinc.data.json.generator.types.RandomType ]
+2019-11-16 23:00:55,397 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ date,net.acesinc.data.json.generator.types.DateType ]
+2019-11-16 23:00:55,398 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ alphaNumeric,net.acesinc.data.json.generator.types.AlphaNumericType ]
+2019-11-16 23:00:55,399 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ integer,net.acesinc.data.json.generator.types.IntegerType ]
+2019-11-16 23:00:55,399 DEBUG n.a.d.j.g.t.TypeHandlerFactory [Thread-5] Discovered TypeHandler [ long,net.acesinc.data.json.generator.types.LongType ]
+2019-11-16 23:00:55,611 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:00:55,937 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:00:56,876 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:00:57,133 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:00:58,353 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:00:58,623 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:00:59,644 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:00,009 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:01,376 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:01,747 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:03,119 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:03,362 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:04,222 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:04,621 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:05,753 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:06,064 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:07,277 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:07,615 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:08,788 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:09,158 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:10,309 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:10,580 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:12,063 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:12,434 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:13,531 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:13,757 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:14,888 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:15,142 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:16,425 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:16,728 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:17,599 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:17,934 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:19,398 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:19,726 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:21,012 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:21,224 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:22,778 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:22,986 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:24,544 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:24,807 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:26,066 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:26,342 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:27,564 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:27,926 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:28,909 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:29,190 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:30,584 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:30,838 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:32,033 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:32,359 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:33,665 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:33,955 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:35,400 DEBUG n.a.d.j.g.l.MqttLogger [Thread-5] Message published
+2019-11-16 23:01:35,754 TRACE n.a.d.j.g.EventGenerator [Thread-5] Generator( jackieChan ) generated 1.0 events/sec
+2019-11-16 23:01:36,364 INFO n.a.d.j.g.JsonDataGenerator [Thread-6] Shutdown Hook Invoked.  Shutting Down Loggers
