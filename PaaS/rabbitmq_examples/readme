@@ -1,0 +1,15 @@
+Commit a docker container to save its state (for example, if you installed python, a library etc):
+
+As an example, after launching rabbitmq from the rabbitmq image, installed python. To make it persistent, you 
+want to commit it using the command:
+
+'sudo docker commit 6545e00910fe cloudassignment/rabbitmq'
+
+To get the container ID to issue the above command, use 'sudo docker ps' 
+List images to see if the new image was created using 'sudo docker images'
+
+To export the image to share it with others do: 
+'sudo docker save 'cloudassignment/rabbitmq' > cloudassignment.rabbitmq.tar'
+
+To import it from tar, do:
+'docker load --input cloudassignment.rabbitmq.tar'
