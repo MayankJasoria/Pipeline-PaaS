@@ -1,5 +1,6 @@
 import docker
 import time
+import os
 
 # Get a docker client
 client = docker.from_env()
@@ -8,7 +9,7 @@ client = docker.from_env()
 global_net = client.networks.create("global_net", driver="bridge")
 
 # Shared folder configuration: location of the folder on host containing the scripts
-shared = {'/home/shubham/Desktop/PaaS/shared': {'bind': '/home', 'mode': 'rw'}}
+shared = {os.getcwd() + os.path.sep + 'shared': {'bind': '/home', 'mode': 'rw'}}
 
 # Launch a pipeline consisting of three containers, mqtt[-p 1883:1883, mqtt_cons.py] -> rmq_cons.py -> docker logs
 container1 = client.containers.run("cloudassignment/rabbitmq",
@@ -42,7 +43,6 @@ print(container1)
 print(container2)
 print("Started rmq and mqtt. Waiting for 10 seconds before starting dependent services.")
 time.sleep(10)
-
 
 
 container3 = client.containers.run("cloudassignment/mqtt", 
