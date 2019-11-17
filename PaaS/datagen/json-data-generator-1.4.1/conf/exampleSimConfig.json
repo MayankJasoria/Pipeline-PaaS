@@ -1,9 +1,0 @@
-{
-    "workflows": [{
-            "workflowName": "test",
-            "workflowFilename": "exampleWorkflow.json"
-        }],
-    "producers": [{
-        "type":"logger"
-    }]
-}
