@@ -169,10 +169,4 @@ for node in PreOrderIter(com0):
 print("Removing network: global_net...")
 global_net.remove()
 
-print("Cleanup complete. Exiting...")                      
-    
-
-
-
-
-
+print("Cleanup complete. Exiting...")           
