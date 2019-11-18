@@ -31,11 +31,17 @@ print(RenderTree(root, style=DoubleStyle))
 # Get a docker client
 client = docker.from_env()
 
+# Get docker client externally
+client = docker.DockerClient(base_url='tcp://172.17.73.158:2375')
+
 # Create a global network using Linux bridge driver 
 global_net = client.networks.create("global_net", driver="bridge")
 
 # Shared folder configuration: location of the folder on host containing the scripts
-shared = {os.getcwd() + os.path.sep + "shared": {'bind': '/home', 'mode': 'rw'}}
+#shared = {os.getcwd() + os.path.sep + "shared": {'bind': '/home', 'mode': 'rw'}}
+
+# C:\Users\Mayank\Documents\BITS\Cloud Computing\Assignments\Term Project\Cloud-Term-Project\PaaS\shared
+shared = {r"C:\Users\Mayank\Documents\BITS\Cloud Computing\Assignments\Term Project\Cloud-Term-Project\PaaS\shared": {'bind': '/home', 'mode': 'rw'}}
 
 # Launch a pipeline consisting of three containers, mqtt[-p 1883:1883, mqtt_cons.py] -> rmq_cons.py -> docker logs
 container1 = client.containers.run("cloudassignment/rabbitmq",
@@ -144,12 +150,12 @@ print("Stopping containers...")
 # Cleanup: close all the containers and remove the network
 
 for node in PreOrderIter(com0):
-    node.container.stop()
+    node.container.stop(timeout=1)
 
-container4.stop()
-container3.stop()
-container2.stop()
-container1.stop()
+container4.stop(timeout=1)
+container3.stop(timeout=1)
+container2.stop(timeout=1)
+container1.stop(timeout=1)
 
 print("Removing containers...")
 container4.remove()
