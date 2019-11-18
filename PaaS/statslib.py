@@ -1,4 +1,7 @@
 from statthread import StatsThread
+from config import Config
+resources = Config.resources
+del Config
 # from threading import Thread
 # import multiprocessing
 import docker
@@ -61,6 +64,11 @@ class statslib:
             self.stats[client][cont]['vol'] = vol
             time.sleep(1)
 
+    def res_man(self):
+        for client in self.stats:
+            cpu = 0
+            mem = 0
+            
 
     def calcCPUPercent(self, previousCPU, previousSystem, v):
         cpuPercent = 0.0

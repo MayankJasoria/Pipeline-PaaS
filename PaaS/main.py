@@ -1,7 +1,9 @@
 import docker
 import time
-import os
+from statslib import statslib
+import sta
 from anytree import *
+from config import Config
 
 class BuildPipeline:
 
@@ -16,6 +18,12 @@ class BuildPipeline:
         self.container2 = None
         self.container3 = None
         self.container4 = None
+
+        temp_dict = {}
+        for cl in Config.clientList:
+            temp_dict.setdefault(cl, {})
+        
+        self.stats = statslib(temp_dict)
 
     def addService(self, name, parentName=None, service):
         """Registers a new service to be added to the pipeline.
@@ -48,7 +56,7 @@ class BuildPipeline:
 
         # [end removeService()]
 
-    def buildPipeline(self, client):
+    def buildPipeline(self, client=Config.defaultClient):
         """Builds the pipeline using the services registered in the dict."""
 
         # init ID counter for unique ids for exchange identifiers
@@ -157,13 +165,16 @@ class BuildPipeline:
                                 volumes = self.shared[client] #For ease, we will mount a common shared folder on all containers.
                             )
             print(node.name)
-            print(node.container)               
+            print(node.container)
+            node.client = client
+            self.stats.addCont(node.client, node.name)     
 
         print("Send data stream to mqtt protocol at localhost:1884!!")
 
         # [end buildPipeline()]
 
     def terminatePipeline(self):
+        """Terminates the pipeline and performs cleanup"""
         print("Stopping containers...")
         # Cleanup: close all the containers and remove the network
 
@@ -182,6 +193,7 @@ class BuildPipeline:
         self.container1.remove()
 
         for node in PreOrderIter(self.root):
+            self.stats.deleteCont(node.client, node.name)
             node.container.remove()
 
         print("Removing network: global_net...")
@@ -192,7 +204,11 @@ class BuildPipeline:
     # [end terminatePipeline()]
 
     def fetchStats(self):
+        """Returns statistics to the user"""
         pass
 
     def migrate(self):
+        pass
+
+    def __sch_cb(self):
         pass
