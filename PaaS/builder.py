@@ -35,7 +35,7 @@ print(RenderTree(root, style=DoubleStyle))
 client = docker.DockerClient(base_url='tcp://172.18.16.10:2375')
 
 # Create a global network using Linux bridge driver 
-global_net = client.networks.create("global_net", driver="bridge")
+global_net = client.networks.create("global_net", driver="overlay")
 
 # Shared folder configuration: location of the folder on host containing the scripts
 # shared = {os.getcwd() + os.path.sep + "shared": {'bind': '/home', 'mode': 'rw'}}
@@ -166,7 +166,6 @@ container1.remove()
 for node in PreOrderIter(com0):
     node.container.remove()
 
-print("Removing network: global_net...")
-# global_net.remove()
+global_net.remove()
 
-print("Cleanup complete. Exiting...")
+print("Cleanup complete. Exiting...")           
