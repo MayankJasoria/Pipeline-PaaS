@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Add/Remove Services</h2>
+
+<form action="">
+  Unique Identifier:<br>
+  <input type="text" name="name">
+  <br>
+  Parent Unique Identifier (Leave blank for root):<br>
+  <input type="text" name="parent">
+  <br><br>
+  <input type="submit" name="action" value="Add Service">
+  <input type="submit" name="action" value="Remove Service">
+</form>
+
+<br><br><br>
+<form action="{{ url_for('build') }}">
+  <input type="submit" name="build" value=" Build pipeline">
+</form>
+
+</body>
+</html>
