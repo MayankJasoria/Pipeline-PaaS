@@ -2,7 +2,7 @@
 
 class Config:
 
-    clientList = ['tcp://172.18.16.10:2375', 'tcp://172.18.16.54:2375', 'tcp://172.18.16.112:2375']
+    clientList = ['tcp://172.18.16.10:2375', 'tcp://172.18.16.54:2375', 'tcp://172.18.16.112:9350']
 
     shared = {
         clientList[0]: '/home/seekndestroy/Desktop/Cloud-Term-Project/PaaS/shared',
@@ -14,18 +14,18 @@ class Config:
 
     resources = {
         clientList[0]: {
-            'cpu': 
-            'mem':
-            'net':
+            'cpu': 0.0055,
+            'mem': 40.0,
+            'net': 40.0
         },
         clientList[1]: {
-            'cpu': 
-            'mem':
-            'net':
-        },,
+            'cpu': 0.0055,
+            'mem': 40.0,
+            'net': 40.0
+        },
         clientList[2]: {
-            'cpu': 
-            'mem':
-            'net':
+            'cpu': 0.0055,
+            'mem': 40.0,
+            'net': 40.0
         }
     }
