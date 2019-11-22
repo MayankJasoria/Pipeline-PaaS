@@ -29,3 +29,11 @@ class Config:
             'net': 40.0
         }
     }
+
+    services = {
+        'strength':'rmq_com_strength.py',
+        'action':'rmq_com_action.py',
+        'style':'rmq_com_style.py',
+        'weapon':'rmq_com_weapon.py',
+        'input':'rmq_com_initial.py'
+    }
