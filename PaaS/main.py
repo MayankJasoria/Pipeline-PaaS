@@ -36,6 +36,7 @@ class BuildPipeline:
                       Defaults to 'root' of the tree if not specified otherwise
         service    -- (string) The python file for the given service (say 'example.py')
         """
+        print('addService called')
         if parentName == None:
             self.root = Node(name, parent=self.rootArgs)
             self.ser_dict[name] = self.root
@@ -44,6 +45,9 @@ class BuildPipeline:
             self.ser_dict[name] = Node(name, parent=self.ser_dict[parentName])
             self.ser_dict[name].service = service
 
+        # print the tree
+        if self.root != None:
+            print(RenderTree(self.root, style=DoubleStyle))
         # [end addService()]
         
     def removeService(self, name):
@@ -52,7 +56,7 @@ class BuildPipeline:
         Keyword arguments:
         name -- (string) Name of the registered service which is to be removed
         """
-
+        print('removeService called')
         # remove if the name exists in dict
         self.ser_dict.pop(name, None)
 
