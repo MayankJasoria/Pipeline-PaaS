@@ -11,11 +11,21 @@
   Parent Unique Identifier (Leave blank for root):<br>
   <input type="text" name="parent">
   <br><br>
+  <select name="services">
+    <option value="" selected disabled hidden>Choose here</option>
+    <option value="input">Initial</option>
+	<option value="strength">Strength</option>
+    <option value="action">Action</option>
+    <option value="style">Style</option>
+    <option value="weapon">Weapon</option>
+  </select>
+  <br><br>
   <input type="submit" name="action" value="Add Service">
   <input type="submit" name="action" value="Remove Service">
 </form>
 
 <br><br><br>
+
 <form action="{{ url_for('build') }}">
   <input type="submit" name="build" value=" Build pipeline">
 </form>
