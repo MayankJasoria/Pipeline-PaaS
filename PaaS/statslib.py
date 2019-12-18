@@ -9,12 +9,16 @@ import time
 import json
 from heapq import * 
 
-"""TODO: To define addCont(client, name) and deleteCont(client, name) 
-         to launch a new stat thread or stop it and remove the cont name"""
 class statslib:
-
-    """ Receives a dictionary of docker clients -> list of containers  """
+    """ Statistics Library for container monitoring and orchestration. """
+    
     def __init__(self, input, sch_cb):
+        """
+        Constructor for the statistics library 
+            :param self: reference to this instance of the class
+            :param input: dictionary of <docker clients> -> <list of containers>
+            :param sch_cb: Name of the scheduler callback function for migration
+        """   
         self.map = input
         self.stats = {} #stores**kwargs the stats 
         self.node_thread = {}
@@ -36,6 +40,16 @@ class statslib:
 
 
     def stat_launch(self, client, cont):
+        """
+        Statistics polling thread for each container. Connects to the docker client
+        running the container. Statistics flow into the stats_obj continously. 
+        CPU, MEM and NET utilization are calculated every second and stored in
+        self.stats.
+            :param self: reference to this instance of the class
+            :param client: docker client which is running the container
+            :param cont: name of the container for which the statistics are obtained
+        """ 
+
         prevCPU = 0.0
         prevSystem = 0.0
         prev_tx_bytes = 0.0
@@ -82,6 +96,13 @@ class statslib:
             time.sleep(1)
 
     def res_man(self):
+        """ Resource scheduler. In every pass (every 2 seconds), calculates total cpu, mem and net utilization
+            for all the physical machines. Calculates Manhattan distance of resource usage to max resource 
+            available for each PM. In every pass migrates the container with highest vol in the target PM to the 
+            PM with the lowest vol. The algorithm is therefore intended to ensure eventual balance of load amongst
+            the PMs. 
+        """
+
         while True:
             vol_map = []
             max_vol_cont_map = {}
@@ -142,9 +163,16 @@ class statslib:
 
     
     def calcCPUPercent(self, previousCPU, previousSystem, v):
-        #print(v)
-        cpuPercent = 0.0
+        """
+        Calculates CPU utilization from stats obtained via docker API. 
+        Inspired from 'docker stats'docstring here
+            :param self: reference to this instance of the class
+            :param previousCPU: previous total CPU usage
+            :param previousSystem: previous system CPU usage
+            :param v: current CPU data obtained via docker API
+        """ 
 
+        cpuPercent = 0.0
         try:
             # calculate the change for the cpu usage of the container in between readings
             cpuDelta = v['cpu_stats']['cpu_usage']['total_usage'] - previousCPU
@@ -158,11 +186,26 @@ class statslib:
         return cpuPercent
 
     def calcNet(self, previous_tx_bytes, curr_tx_bytes, delta_t, bw):
+        """
+        Calculates NET bandwidth
+            :param self: reference to this instance of the class
+            :param previous_tx_bytes: number of bytes transmitted as per previous stats
+            :param curr_tx_bytes: number of bytes transmitted as per current stats
+            :param delta_t: time interval between statistics collection
+            :param bw: max bandwidth capacity on the container link
+        """ 
+
         tx_rate = (curr_tx_bytes - previous_tx_bytes)/delta_t
         return tx_rate/bw
 
     def addCont(self, client, cont):
-        """ Method to register a new container to an existing client so that it can be polled for statistics. """
+        """
+        Register a new container to an existing client so that it can be polled for statistics.
+            :param self: reference to this instance of the class
+            :param client: docker client to which the container is to be registered
+            :param cont: the name of the container to be registered
+        """  
+
         # add new value to list of containers in stats
         self.map[client].append(cont)
 
@@ -173,7 +216,13 @@ class statslib:
         # [end of addCont]
 
     def deleteCont(self, client, cont):
-        """ Method to unregister a container from an existing client so that it is no longer polled for statistics. """
+        """
+        De-register a container from an existing client so that it is no longer polled for statistics.
+            :param self: reference to this instance of the class
+            :param client: docker client from which the container is to be de-registered
+            :param cont: the name of the container to be de-registered
+        """   
+
         # stop thread associated with this container
         # process = self.node_proc[client][cont]
         # process.terminate()

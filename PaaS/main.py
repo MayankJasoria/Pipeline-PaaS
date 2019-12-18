@@ -5,8 +5,8 @@ from anytree import *
 from config import Config
 
 class BuildPipeline:
-
     """ Class to collect all services in pipeline, then generate the tree """
+    
     def __init__(self):
         self.ser_dict = {}
         self.root = None
@@ -36,6 +36,7 @@ class BuildPipeline:
                       Defaults to 'root' of the tree if not specified otherwise
         service    -- (string) The python file for the given service (say 'example.py')
         """
+
         print('addService called')
         if parentName == None:
             self.root = Node(name, parent=self.rootArgs)
@@ -181,6 +182,7 @@ class BuildPipeline:
 
     def terminatePipeline(self):
         """Terminates the pipeline and performs cleanup"""
+
         print("Stopping containers...")
         # Cleanup: close all the containers and remove the network
 
