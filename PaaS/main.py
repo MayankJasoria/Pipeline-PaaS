@@ -64,7 +64,11 @@ class BuildPipeline:
         # [end removeService()]
 
     def buildPipeline(self, client=Config.defaultClient):
-        """Builds the pipeline using the services registered in the dict."""
+        """
+        Builds the pipeline using the services registered in the dict.
+            :param self: reference to this instance of the class
+            :param client=Config.defaultClient: requests to launch the containers is made to this client initially
+        """  
 
         # init ID counter for unique ids for exchange identifiers
         # format exch<exch_cnt>s
@@ -181,7 +185,7 @@ class BuildPipeline:
         # [end buildPipeline()]
 
     def terminatePipeline(self):
-        """Terminates the pipeline and performs cleanup"""
+        """ Terminates the pipeline and performs cleanup """
 
         print("Stopping containers...")
         # Cleanup: close all the containers and remove the network
@@ -213,7 +217,7 @@ class BuildPipeline:
     # [end terminatePipeline()]
 
     def fetchStats(self):
-        """Returns statistics to the user"""
+        """ Returns statistics to the user """
         pass
 
     def _migrate(self, src_client, dest_client, cont):
